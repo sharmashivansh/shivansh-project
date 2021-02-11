@@ -86,3 +86,14 @@ class Student(models.Model):
 
     def __str__(self):
         return self.first_name if self.first_name else ''
+    
+class Device(models.Model):
+       
+    created_by = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True, related_name='device')
+    device_type = models.PositiveIntegerField(choices=DEVICE_TYPE,null=True,blank=True)
+    device_name = models.CharField(max_length=50,null=True,blank=True)
+    device_token = models.CharField(max_length=500,null=True,blank=True)
+    
+    class Meta:
+        managed = True
+        db_table = 'tbl_device'
