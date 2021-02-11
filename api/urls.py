@@ -26,3 +26,10 @@ urlpatterns = [
     url(r'', include(router.urls)),
    
 ]
+
+urlpatterns = [
+    url(r'', include(router.urls)),
+    url(r'accounts/password-reset/$', ResetPassword.as_view(), name="account_password_reset"),
+    url(r'user/signup/', Registrations.as_view(), name="signup"),
+    url(r'user/login/', UserLoginView.as_view(), name="login"),
+]
